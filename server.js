@@ -45,7 +45,8 @@ const PORT = 3000;
 app.use(express.static(join(__dirname, 'dist')));
 
 // Handle Client-Side Routing (Serve index.html for all non-API routes)
-app.get('*', (req, res) => {
+// Note: using regex /.*/ because '*' string is invalid in path-to-regexp v6+ (used by Express 5)
+app.get(/.*/, (req, res) => {
     // Check if request is for API
     if (req.path.startsWith('/api')) return res.status(404).json({ error: 'API Endpoint Not Found' });
 
