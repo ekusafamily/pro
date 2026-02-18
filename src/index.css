@@ -1,0 +1,65 @@
+@import "tailwindcss";
+
+body {
+  font-family: 'Space Grotesk', sans-serif;
+  background-color: #f7f6f5;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f7f6f5;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #007BFF;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #0056b3;
+}
+
+@media print {
+
+  /* Hide everything by default */
+  body * {
+    visibility: hidden;
+    box-shadow: none !important;
+  }
+
+  /* Show only targeted printable areas */
+  #receipt-content,
+  #receipt-content *,
+  .printable-report,
+  .printable-report * {
+    visibility: visible;
+  }
+
+  /* Position the printable area at the top left */
+  #receipt-content,
+  .printable-report {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    margin: 0;
+    padding: 20px;
+    background: white;
+  }
+
+  /* Ensure background colors and images are printed */
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* Don't print empty gaps or fixed sidebars */
+  aside,
+  header,
+  button:not(.print-include) {
+    display: none !important;
+  }
+}

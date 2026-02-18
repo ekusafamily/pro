@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: srms-backend
+    env: node
+    plan: free
+    buildCommand: npm install && npm run build
+    startCommand: node server.js
+    envVars:
+      - key: VITE_SUPABASE_URL
+        sync: false
+      - key: SUPABASE_SERVICE_ROLE_KEY
+        sync: false
+      - key: VITE_LIPIA_API_KEY
+        sync: false
